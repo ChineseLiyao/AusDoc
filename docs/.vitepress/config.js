@@ -1,4 +1,8 @@
 import { defineConfig } from 'vitepress'
+import { generateSidebar } from './sidebar.js'
+import path from 'path'
+
+const guideSidebar = generateSidebar(path.resolve(__dirname, '../guide'), 'guide')
 
 export default defineConfig({
   base: '/',
@@ -12,23 +16,23 @@ export default defineConfig({
       { text: '关于', link: '/about' }
     ],
 
-    sidebar: [
-      {
-        text: '开始',
-        items: [
-          { text: '介绍', link: '/guide/' },
-          { text: '快速开始', link: '/guide/getting-started' }
-        ]
-      },
-    ],
+    // 自动生成的侧边栏
+    sidebar: {
+      '/guide/': guideSidebar
+    },
 
     socialLinks: [
-      { icon: 'github', link: 'https://github.com/ChineseLiyao/chineseliyao.github.io' }
+      { icon: 'github', link: 'https://github.com/ChineseLiyao' }
     ],
 
     footer: {
       message: 'Released under the MIT License.',
       copyright: 'Copyright © 2026-present AusJava'
+    },
+
+    // 启用本地搜索
+    search: {
+      provider: 'local'
     }
   }
 })
