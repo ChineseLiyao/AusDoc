@@ -23,7 +23,7 @@ const myCards = [
   { 
     title: 'Java版开服指南', 
     desc: '了解如何开一个Java版服务器', 
-    link: 'bedrock/',
+    link: 'java/',
     type: 'page'
   }
 ]
