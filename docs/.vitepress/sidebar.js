@@ -4,7 +4,6 @@ import path from 'path'
 function extractFrontmatter(filePath) {
   try {
     const content = fs.readFileSync(filePath, 'utf-8')
-    // 支持 \r\n 和 \n 换行符
     const match = content.match(/^---\r?\n([\s\S]*?)\r?\n---/)
     if (match) {
       const frontmatter = {}
@@ -16,10 +15,8 @@ function extractFrontmatter(filePath) {
           const key = line.substring(0, colonIndex).trim()
           const value = line.substring(colonIndex + 1).trim()
           
-          // 移除引号
           const cleanValue = value.replace(/^['"]|['"]$/g, '')
           
-          // 尝试转换为数字
           if (!isNaN(cleanValue) && cleanValue !== '') {
             frontmatter[key] = Number(cleanValue)
           } else {
@@ -44,7 +41,6 @@ export function generateSidebar(dir, prefix = '') {
   const items = []
   const files = fs.readdirSync(dir, { withFileTypes: true })
 
-  // 分别处理文件和目录
   const directories = []
   const markdownFiles = []
 
@@ -58,7 +54,6 @@ export function generateSidebar(dir, prefix = '') {
     }
   })
 
-  // 处理 markdown 文件（同一层级）
   markdownFiles.forEach(file => {
     const fullPath = path.join(dir, file.name)
     const relativePath = path.join(prefix, file.name)
@@ -66,7 +61,6 @@ export function generateSidebar(dir, prefix = '') {
     const frontmatter = extractFrontmatter(fullPath)
     
     if (name === 'index') {
-      // index.md 作为目录首页
       items.push({
         text: frontmatter.title || '概览',
         link: prefix ? `/${prefix.replace(/\\/g, '/')}/` : '/',
@@ -84,17 +78,14 @@ export function generateSidebar(dir, prefix = '') {
     }
   })
 
-  // 在当前层级排序文件
   items.sort((a, b) => {
     const orderA = a.order !== undefined ? a.order : 999
     const orderB = b.order !== undefined ? b.order : 999
     return orderA - orderB
   })
 
-  // 移除文件的 order 属性
   items.forEach(item => delete item.order)
 
-  // 处理子目录（同一层级）
   const dirItems = []
   directories.forEach(file => {
     const fullPath = path.join(dir, file.name)
@@ -102,7 +93,6 @@ export function generateSidebar(dir, prefix = '') {
     
     const subItems = generateSidebar(fullPath, relativePath)
     if (subItems.length > 0) {
-      // 尝试读取目录的 index.md
       const indexPath = path.join(fullPath, 'index.md')
       let dirTitle = formatName(file.name)
       let dirOrder = extractOrderFromName(file.name)
@@ -122,17 +112,14 @@ export function generateSidebar(dir, prefix = '') {
     }
   })
 
-  // 在当前层级排序目录
   dirItems.sort((a, b) => {
     const orderA = a.order !== undefined ? a.order : 999
     const orderB = b.order !== undefined ? b.order : 999
     return orderA - orderB
   })
 
-  // 移除目录的 order 属性
   dirItems.forEach(item => delete item.order)
 
-  // 合并文件和目录：文件在前，目录在后
   return [...items, ...dirItems]
 }
 
