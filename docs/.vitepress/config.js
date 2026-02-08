@@ -4,7 +4,7 @@ export default defineConfig({
   base: '/',
   title: 'AusDoc',
   description: 'AusJava 服务器文档站点',
-  
+
   themeConfig: {
     nav: [
       { text: '首页', link: '/' },
