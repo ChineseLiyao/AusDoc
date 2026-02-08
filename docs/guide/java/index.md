@@ -18,7 +18,7 @@ const myCards = [
   { 
     title: 'Spigot及其分支', 
     desc: '流行Bukkit服务器mod的一个分支', 
-    link: './endstone',
+    link: './spigot',
     type: 'page'
   }
 
