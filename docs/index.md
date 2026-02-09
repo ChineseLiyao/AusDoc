@@ -3,7 +3,7 @@ layout: home
 
 hero:
   name: "AusDoc"
-  text: "AusJava 服务器提供的 Minecraft 服务器的开设教程"
+  text: "AusJava 服务器提供的MC服务器的开设教程"
   tagline: 简单，高效，全面的开服文档。
   actions:
     - theme: brand
