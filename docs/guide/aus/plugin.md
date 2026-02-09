@@ -332,6 +332,7 @@ mv PluginName.jar PluginName.jar.disabled
 ### 使用 PlugMan
 
 > 部分插件不支持热加载/卸载
+
 PlugMan 允许热加载/卸载插件：
 
 ```bash
