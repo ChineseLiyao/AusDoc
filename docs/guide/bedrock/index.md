@@ -16,12 +16,17 @@ import ApiCards from '../../.vitepress/theme/components/ApiCards.vue'
 
 const myCards = [
   { 
+    title: 'BDS 原版核心', 
+    desc: 'Mojang 官方服务器', 
+    link: '/guide/bedrock/bds',
+    type: 'page'
+  },
+  { 
     title: 'Endstone', 
     desc: '新兴插件加载器', 
-    link: './endstone',
+    link: '/guide/bedrock/endstone',
     type: 'page'
   }
-
 ]
 </script>
 

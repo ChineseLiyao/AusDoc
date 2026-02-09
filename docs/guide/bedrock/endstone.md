@@ -14,7 +14,7 @@ Endstone 是一个基于 Bedrock Dedicated Server (BDS) 的插件加载器，它
 ## 开服方法
 
 ### 环境要求
-Python 3.10 或更高版本
+- Python 3.10 或更高版本
 
 ### 下载Endstone
 ```bash
