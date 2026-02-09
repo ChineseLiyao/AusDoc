@@ -137,6 +137,7 @@ Paper 官方插件平台。
 
 #### EssentialsX
 > 不建议使用Ess，这些基础命令都可以从各个小插件那里得到，Ess使用困难，功能落后，建议无特殊需求不要使用。
+
 基础命令合集。
 
 - 功能：/home, /tpa, /warp, /kit 等
@@ -276,7 +277,6 @@ mv PluginName.jar PluginName.jar.disabled
 ### 备份
 
 更新或修改插件前，建议备份原插件，防止无法使用.
-```
 
 ## 故障排除
 
